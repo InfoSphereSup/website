@@ -95,22 +95,23 @@
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem; /* Aumentei o gap entre logo e texto */
     }
 
     .logo {
-      height: 60px;
+      height: 100px; // AUMENTEI O TAMANHO DO LOGO PARA 100px
       width: auto;
+      object-fit: contain;
     }
 
     .logo-text h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--primary);
     }
 
     .logo-text p {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--gray);
     }
 
@@ -191,7 +192,7 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
-    /* Features Section */
+    /* Features Section - ATUALIZADA COM 4 CARDS */
     .features {
       padding: 4rem 1rem;
       background-color: white;
@@ -216,10 +217,22 @@
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    @media (max-width: 1200px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .feature-card {
@@ -349,7 +362,7 @@
     }
 
     .footer-logo img {
-      height: 50px;
+      height: 80px; // AUMENTEI O LOGO NO FOOTER TAMBÉM
     }
 
     .footer-about p {
@@ -458,6 +471,10 @@
         flex: none;
         width: 100%;
       }
+      
+      .logo {
+        height: 80px; // REDUZ O LOGO EM TELAS MENORES
+      }
     }
 
     @media (max-width: 768px) {
@@ -477,6 +494,10 @@
       .hero p {
         font-size: 1rem;
       }
+      
+      .logo {
+        height: 70px; // REDUZ MAIS EM MOBILE
+      }
     }
 
     @media (max-width: 576px) {
@@ -489,10 +510,6 @@
       .main-nav ul {
         flex-wrap: wrap;
         justify-content: center;
-      }
-      
-      .features-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -549,7 +566,7 @@
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features Section ATUALIZADA -->
   <section class="features" id="produtos">
     <div class="section-title">
       <h2>Nossos Produtos</h2>
@@ -569,8 +586,8 @@
         <div class="feature-icon">
           <i class="fas fa-server"></i>
         </div>
-        <h3>Servidores e Storage</h3>
-        <p>Soluções completas para infraestrutura de TI e armazenamento</p>
+        <h3>Servidores e Softwares</h3>
+        <p>Soluções completas para infraestrutura de TI e sistemas corporativos</p>
       </div>
       
       <div class="feature-card">
@@ -579,6 +596,14 @@
         </div>
         <h3>Redes e Segurança</h3>
         <p>Equipamentos para montagem e expansão de redes corporativas</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-keyboard"></i>
+        </div>
+        <h3>Periféricos</h3>
+        <p>Mouses, teclados, headsets e acessórios de alta qualidade</p>
       </div>
     </div>
   </section>
@@ -639,7 +664,7 @@
     <div class="footer-container">
       <div class="footer-about">
         <div class="footer-logo">
-          <img src="./logo.png" alt="Infosphere" style="height: 60px;">
+          <img src="./logo.png" alt="Infosphere" class="logo">
         </div>
         <p>A Infosphere oferece as melhores soluções em tecnologia para sua empresa com qualidade e preço competitivo.</p>
         <div class="social-links">
@@ -663,6 +688,7 @@
       
       <div class="footer-contact">
         <h3>Contato</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
         <p><i class="fas fa-phone"></i> (19) 99910-1682</p>
         <p><i class="fas fa-envelope"></i> comercial@infosphere.net.br</p>
         <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
