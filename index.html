@@ -47,14 +47,14 @@
       scroll-behavior: smooth;
     }
 
-    /* Header fluido com animação de scroll */
+    /* Header com logo maior */
     header {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 2rem;
       background: var(--primary-color);
       color: #fff;
-      padding: 1.2rem 2rem;
+      padding: 1.5rem 2.5rem;
       box-shadow: var(--shadow-md);
       position: sticky;
       top: 0;
@@ -64,14 +64,14 @@
     }
 
     body.scrolled header {
-      padding: 0.8rem 2rem;
+      padding: 1rem 2.5rem;
       box-shadow: var(--shadow-lg);
       backdrop-filter: blur(5px);
       background-color: rgba(0, 80, 179, 0.95);
     }
 
     header .logo {
-      height: 80px;
+      height: 150px; /* Aumentei significativamente o tamanho do logo */
       width: auto;
       object-fit: contain;
       transition: var(--transition);
@@ -79,11 +79,11 @@
     }
 
     body.scrolled header .logo {
-      height: 60px;
+      height: 100px; /* Tamanho reduzido quando faz scroll */
     }
 
     header .logo:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     header div {
@@ -93,39 +93,39 @@
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       transition: var(--transition);
     }
 
     body.scrolled header h1 {
-      font-size: 1.6rem;
+      font-size: 2rem;
     }
 
     header p {
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 1.2rem;
       opacity: 0.9;
       transition: var(--transition);
     }
 
     body.scrolled header p {
-      font-size: 0.85rem;
+      font-size: 1rem;
     }
 
-    /* Hero section com animação de entrada */
+    /* Restante do CSS permanece igual ao código anterior */
     .hero {
       background: url('https://source.unsplash.com/1600x600/?technology,computer') no-repeat center/cover;
-      padding: 6rem 1rem;
+      padding: 7rem 1rem;
       color: white;
       text-align: center;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 400px;
+      min-height: 450px;
       animation: fadeIn 1s ease-out;
     }
 
@@ -151,18 +151,17 @@
     }
 
     .hero h2 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       animation: slideInUp 0.8s ease-out 0.2s both;
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       animation: slideInUp 0.8s ease-out 0.4s both;
     }
 
-    /* Conteúdo principal com animações */
     main.content {
       background: rgba(255, 255, 255, 0.95);
       max-width: 900px;
@@ -188,7 +187,7 @@
     main.content h3 {
       color: var(--primary-color);
       margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 600;
     }
 
@@ -198,7 +197,6 @@
       color: var(--text-light);
     }
 
-    /* Formulário com interações fluidas */
     form {
       display: flex;
       flex-direction: column;
@@ -245,7 +243,6 @@
       transform: translateY(-1px);
     }
 
-    /* Botão do WhatsApp com animação pulsante */
     .whatsapp {
       position: fixed;
       bottom: 25px;
@@ -282,7 +279,6 @@
       font-size: 1.5rem;
     }
 
-    /* Footer com entrada suave */
     footer {
       text-align: center;
       padding: 1.8rem 1rem;
@@ -296,75 +292,63 @@
       animation: fadeInUp 0.8s ease-out 0.8s forwards;
     }
 
-    /* Efeito de hover em cards (para futuras expansões) */
-    .card {
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* Scroll personalizado */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary-color);
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-dark);
-    }
-
-    /* Responsividade com transições suaves */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        gap: 1rem;
-        text-align: left;
-        padding: 1rem;
-      }
-      
+    /* Responsividade com logo grande */
+    @media (max-width: 992px) {
       header .logo {
-        height: 60px;
+        height: 120px;
       }
       
       body.scrolled header .logo {
-        height: 50px;
+        height: 90px;
       }
       
       header h1 {
-        font-size: 1.6rem;
-      }
-      
-      body.scrolled header h1 {
-        font-size: 1.4rem;
-      }
-      
-      header p {
-        font-size: 0.9rem;
-      }
-      
-      .hero {
-        padding: 4rem 1rem;
-        min-height: 300px;
-      }
-      
-      .hero h2 {
         font-size: 2.2rem;
       }
       
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        gap: 1.5rem;
+        padding: 1.2rem;
+      }
+      
+      header .logo {
+        height: 100px;
+      }
+      
+      body.scrolled header .logo {
+        height: 80px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      body.scrolled header h1 {
+        font-size: 1.6rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .hero {
+        padding: 5rem 1rem;
+        min-height: 350px;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
       .hero p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       
       main.content {
@@ -377,11 +361,20 @@
       header {
         flex-direction: column;
         text-align: center;
-        gap: 0.8rem;
+        gap: 1rem;
+      }
+      
+      header .logo {
+        height: 120px;
+        margin: 0 auto;
+      }
+      
+      body.scrolled header .logo {
+        height: 90px;
       }
       
       header h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
       
       .hero h2 {
@@ -389,7 +382,7 @@
       }
       
       main.content h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
     }
   </style>
