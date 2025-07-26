@@ -42,7 +42,7 @@
     }
 
     header .logo {
-      height: 50px;
+      height: 80px; /* Aumentei o tamanho do logo */
       width: auto;
     }
 
@@ -200,23 +200,20 @@
 
     /* Responsividade */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-
-      main.content {
-        margin: -60px 1rem 2rem 1rem;
-        padding: 2rem 1.5rem;
-      }
-
       header {
         flex-direction: column;
         gap: 0.5rem;
         text-align: center;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      main.content {
+        margin: -60px 1rem 2rem 1rem;
+        padding: 2rem 1.5rem;
       }
     }
   </style>
@@ -224,7 +221,7 @@
 <body>
 
   <header>
-    <img src="/logo.png" alt="Logo Infosphere" class="logo" />
+    <img src="images/logo.png" alt="Logo Infosphere" class="logo" />
     <div>
       <h1>Infosphere</h1>
       <p>Revenda de Equipamentos de Informática em Lote com os Melhores Preços</p>
