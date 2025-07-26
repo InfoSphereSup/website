@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infosphere - Equipamentos de Informática</title>
-
+  <title>Infosphere - Soluções em Tecnologia</title>
+  
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary-color: #0050b3;
+      --primary: #0050b3;
       --primary-dark: #003d8a;
-      --secondary-color: #25d366;
-      --text-color: #222;
-      --text-light: #555;
-      --bg-gradient: linear-gradient(135deg, #c3e6ff, #e6f2ff);
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      --border-radius: 12px;
+      --secondary: #25d366;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --border-radius: 8px;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -36,438 +33,672 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-gradient);
-      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-color: var(--light);
       overflow-x: hidden;
-      scroll-behavior: smooth;
     }
 
-    /* Header com logo maior */
-    header {
+    /* Header estilo Boxware */
+    .top-bar {
+      background-color: var(--dark);
+      color: white;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .top-bar-container {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 2rem;
-      background: var(--primary-color);
-      color: #fff;
-      padding: 1.5rem 2.5rem;
-      box-shadow: var(--shadow-md);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: var(--transition);
-      will-change: transform;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
     }
 
-    body.scrolled header {
-      padding: 1rem 2.5rem;
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(5px);
-      background-color: rgba(0, 80, 179, 0.95);
-    }
-
-    header .logo {
-      height: 150px; /* Aumentei significativamente o tamanho do logo */
-      width: auto;
-      object-fit: contain;
-      transition: var(--transition);
-      transform-origin: left center;
-    }
-
-    body.scrolled header .logo {
-      height: 100px; /* Tamanho reduzido quando faz scroll */
-    }
-
-    header .logo:hover {
-      transform: scale(1.05);
-    }
-
-    header div {
+    .top-bar-contacts {
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      gap: 1.5rem;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.5rem;
-      transition: var(--transition);
-    }
-
-    body.scrolled header h1 {
-      font-size: 2rem;
-    }
-
-    header p {
-      font-weight: 500;
-      font-size: 1.2rem;
-      opacity: 0.9;
-      transition: var(--transition);
-    }
-
-    body.scrolled header p {
-      font-size: 1rem;
-    }
-
-    /* Restante do CSS permanece igual ao código anterior */
-    .hero {
-      background: url('https://source.unsplash.com/1600x600/?technology,computer') no-repeat center/cover;
-      padding: 7rem 1rem;
+    .top-bar-contacts a {
       color: white;
-      text-align: center;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 450px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0,0,0,0.45);
-      z-index: 0;
-      border-radius: 0 0 40% 40% / 100% 100% 0 0;
-    }
-
-    .hero h2, .hero p {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      animation: slideInUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      animation: slideInUp 0.8s ease-out 0.4s both;
-    }
-
-    main.content {
-      background: rgba(255, 255, 255, 0.95);
-      max-width: 900px;
-      margin: -80px auto 2rem auto;
-      padding: 3rem 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(6px);
-      position: relative;
-      z-index: 10;
-      transform: translateY(50px);
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.6s forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    main.content h3 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      font-weight: 600;
-    }
-
-    main.content p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-      color: var(--text-light);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    input, textarea {
-      padding: 1rem;
-      font-size: 1rem;
-      border-radius: var(--border-radius);
-      border: 1.5px solid #ddd;
-      transition: var(--transition);
-      font-family: 'Inter', sans-serif;
-      background: rgba(255,255,255,0.9);
-    }
-
-    input:focus, textarea:focus {
-      border-color: var(--primary-color);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(0, 80, 179, 0.2);
-      transform: translateY(-2px);
-    }
-
-    button {
-      background: var(--primary-color);
-      color: white;
-      padding: 1.2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: var(--transition);
-      will-change: transform;
-    }
-
-    button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 7px 14px rgba(0,0,0,0.1);
-    }
-
-    button:active {
-      transform: translateY(-1px);
-    }
-
-    .whatsapp {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: var(--secondary-color);
-      color: white;
-      padding: 15px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      box-shadow: 0 6px 15px rgba(37,211,102,0.4);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
+      gap: 0.5rem;
       transition: var(--transition);
+    }
+
+    .top-bar-contacts a:hover {
+      color: #ccc;
+    }
+
+    .main-header {
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
     }
 
-    .whatsapp:hover {
-      background: #1ebc59;
-      transform: scale(1.05) translateY(-3px);
-      animation: none;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .whatsapp i {
-      font-size: 1.5rem;
+    .logo {
+      height: 60px;
+      width: auto;
     }
 
-    footer {
-      text-align: center;
-      padding: 1.8rem 1rem;
-      background: #f7f9fc;
+    .logo-text h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo-text p {
       font-size: 0.9rem;
-      color: var(--text-light);
-      margin-top: auto;
-      border-top: 1px solid #ddd;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.8s forwards;
+      color: var(--gray);
     }
 
-    /* Responsividade com logo grande */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .main-nav a:hover {
+      color: var(--primary);
+    }
+
+    .main-nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -5px;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .main-nav a:hover:after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?technology,office') no-repeat center/cover;
+      color: white;
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 4rem 1rem;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 1rem;
+      background-color: var(--light);
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-image {
+      flex: 1;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-content {
+      flex: 1;
+    }
+
+    .about-content h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-content p {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 4rem 1rem;
+      background-color: white;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 1rem;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-about p {
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-links h3, .footer-contact h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .footer-links h3:after, .footer-contact h3:after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+      bottom: -8px;
+      left: 0;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      color: #ccc;
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #111;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    /* WhatsApp fixed button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--secondary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #1da851;
+    }
+
+    /* Responsividade */
     @media (max-width: 992px) {
-      header .logo {
-        height: 120px;
+      .about-container {
+        flex-direction: column;
       }
       
-      body.scrolled header .logo {
-        height: 90px;
-      }
-      
-      header h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero h2 {
-        font-size: 2.5rem;
+      .about-image, .about-content {
+        flex: none;
+        width: 100%;
       }
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        gap: 1.5rem;
-        padding: 1.2rem;
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
       }
       
-      header .logo {
-        height: 100px;
+      .main-nav ul {
+        gap: 1rem;
       }
       
-      body.scrolled header .logo {
-        height: 80px;
-      }
-      
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      body.scrolled header h1 {
-        font-size: 1.6rem;
-      }
-      
-      header p {
-        font-size: 1rem;
-      }
-      
-      .hero {
-        padding: 5rem 1rem;
-        min-height: 350px;
-      }
-      
-      .hero h2 {
+      .hero h1 {
         font-size: 2rem;
       }
       
       .hero p {
-        font-size: 1.2rem;
-      }
-      
-      main.content {
-        margin: -60px 1rem 2rem 1rem;
-        padding: 2.5rem 1.5rem;
+        font-size: 1rem;
       }
     }
 
-    @media (max-width: 480px) {
-      header {
+    @media (max-width: 576px) {
+      .top-bar-container {
         flex-direction: column;
+        gap: 0.5rem;
         text-align: center;
-        gap: 1rem;
       }
       
-      header .logo {
-        height: 120px;
-        margin: 0 auto;
+      .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
       }
       
-      body.scrolled header .logo {
-        height: 90px;
-      }
-      
-      header h1 {
-        font-size: 1.8rem;
-      }
-      
-      .hero h2 {
-        font-size: 1.8rem;
-      }
-      
-      main.content h3 {
-        font-size: 1.6rem;
+      .features-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="./logo.png" alt="Logo Infosphere" class="logo" />
-    <div>
-      <h1>Infosphere</h1>
-      <p>Revenda de Equipamentos de Informática em Lote com os Melhores Preços</p>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-contacts">
+        <a href="mailto:comercial@infosphere.net.br">
+          <i class="fas fa-envelope"></i> comercial@infosphere.net.br
+        </a>
+        <a href="tel:+5519999101682">
+          <i class="fas fa-phone"></i> (19) 99910-1682
+        </a>
+      </div>
+      <div class="top-bar-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="./logo.png" alt="Infosphere" class="logo">
+        <div class="logo-text">
+          <h1>INFOSPHERE</h1>
+          <p>Soluções em Tecnologia</p>
+        </div>
+      </div>
+      
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <div class="hero">
-    <h2>Soluções em Tecnologia para sua Empresa</h2>
-    <p>Oferecemos equipamentos de qualidade para revenda e uso corporativo</p>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Soluções em Tecnologia para sua Empresa</h1>
+      <p>Oferecemos equipamentos de qualidade para revenda e uso corporativo com os melhores preços do mercado</p>
+      <a href="#contato" class="btn">Solicitar Orçamento</a>
+    </div>
+  </section>
 
-  <main class="content">
-    <h3>Sobre Nós</h3>
-    <p>Somos a Infosphere, uma empresa especializada na revenda de equipamentos de informática em geral, com foco em vendas por lote e preços competitivos. Nosso objetivo é oferecer qualidade e confiança a nossos clientes.</p>
+  <!-- Features Section -->
+  <section class="features" id="produtos">
+    <div class="section-title">
+      <h2>Nossos Produtos</h2>
+      <p>Conheça nossos principais produtos e soluções em tecnologia</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <h3>Notebooks e Computadores</h3>
+        <p>Equipamentos novos e recondicionados com garantia para sua empresa</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-server"></i>
+        </div>
+        <h3>Servidores e Storage</h3>
+        <p>Soluções completas para infraestrutura de TI e armazenamento</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h3>Redes e Segurança</h3>
+        <p>Equipamentos para montagem e expansão de redes corporativas</p>
+      </div>
+    </div>
+  </section>
 
-    <h3>Contato e Orçamento</h3>
-    <form action="https://formsubmit.co/comercial@infosphere.net.br" method="POST">
-      <input type="text" name="nome" placeholder="Seu nome" required />
-      <input type="email" name="email" placeholder="Seu email" required />
-      <textarea name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </main>
+  <!-- About Section -->
+  <section class="about" id="sobre">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://source.unsplash.com/600x400/?office,meeting" alt="Sobre a Infosphere">
+      </div>
+      
+      <div class="about-content">
+        <h2>Sobre Nós</h2>
+        <p>A Infosphere é uma empresa especializada na revenda de equipamentos de informática em geral, com foco em vendas por lote e preços competitivos.</p>
+        <p>Nosso objetivo é oferecer qualidade e confiança a nossos clientes, com produtos testados e garantidos, além de um atendimento personalizado.</p>
+        <p>Com anos de experiência no mercado, nos tornamos referência em soluções tecnológicas para empresas de todos os portes.</p>
+        <a href="#contato" class="btn">Fale Conosco</a>
+      </div>
+    </div>
+  </section>
 
-  <a class="whatsapp" href="https://wa.me/5519999101682" target="_blank" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i> Whatsapp
-  </a>
+  <!-- Contact Section -->
+  <section class="contact" id="contato">
+    <div class="section-title">
+      <h2>Entre em Contato</h2>
+      <p>Solicite um orçamento ou tire suas dúvidas com nossa equipe</p>
+    </div>
+    
+    <div class="contact-container">
+      <form class="contact-form" action="https://formsubmit.co/comercial@infosphere.net.br" method="POST">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input type="tel" id="phone" name="phone" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" class="form-control" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn">Enviar Mensagem</button>
+      </form>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Infosphere - Todos os direitos reservados</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <img src="./logo.png" alt="Infosphere" style="height: 60px;">
+        </div>
+        <p>A Infosphere oferece as melhores soluções em tecnologia para sua empresa com qualidade e preço competitivo.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3>Contato</h3>
+        <p><i class="fas fa-phone"></i> (19) 99910-1682</p>
+        <p><i class="fas fa-envelope"></i> comercial@infosphere.net.br</p>
+        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Infosphere. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/5519999101682" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script>
-    // Efeito de scroll no header
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        document.body.classList.add('scrolled');
-      } else {
-        document.body.classList.remove('scrolled');
-      }
-    });
-
-    // Animação de elementos quando entram na viewport
-    const animateOnScroll = function() {
-      const elements = document.querySelectorAll('.content, footer');
-      
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (elementPosition < screenPosition) {
-          element.style.animation = 'fadeInUp 0.8s ease-out forwards';
-        }
-      });
-    };
-
-    window.addEventListener('scroll', animateOnScroll);
-    window.addEventListener('load', animateOnScroll);
-
-    // Suavizar todos os links internos
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
+        
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
       });
     });
-
-    // Feedback tátil para botões
-    document.querySelectorAll('button, input[type="submit"], .whatsapp').forEach(button => {
-      button.addEventListener('click', function() {
-        this.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 150);
-      });
+    
+    // Sticky header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.main-header');
+      if (window.scrollY > 100) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
     });
   </script>
 </body>
