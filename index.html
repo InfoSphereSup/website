@@ -6,12 +6,29 @@
   <title>Infosphere - Equipamentos de Informática</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- FontAwesome para ícones -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <style>
+    :root {
+      --primary-color: #0050b3;
+      --primary-dark: #003d8a;
+      --secondary-color: #25d366;
+      --text-color: #222;
+      --text-light: #555;
+      --bg-gradient: linear-gradient(135deg, #c3e6ff, #e6f2ff);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --border-radius: 12px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -20,36 +37,53 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #c3e6ff, #e6f2ff);
-      color: #222;
+      background: var(--bg-gradient);
+      color: var(--text-color);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
+    /* Header fluido com animação de scroll */
     header {
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      background: #0050b3;
+      background: var(--primary-color);
       color: #fff;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1.2rem 2rem;
+      box-shadow: var(--shadow-md);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: var(--transition);
+      will-change: transform;
+    }
+
+    body.scrolled header {
+      padding: 0.8rem 2rem;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(5px);
+      background-color: rgba(0, 80, 179, 0.95);
     }
 
     header .logo {
-      height: 220px; /* Aumentei o tamanho do logo */
+      height: 80px;
       width: auto;
       object-fit: contain;
-      transition: transform 0.3s ease;
+      transition: var(--transition);
+      transform-origin: left center;
+    }
+
+    body.scrolled header .logo {
+      height: 60px;
     }
 
     header .logo:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     header div {
@@ -59,18 +93,29 @@
     }
 
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+      transition: var(--transition);
+    }
+
+    body.scrolled header h1 {
+      font-size: 1.6rem;
     }
 
     header p {
       font-weight: 500;
-      font-size: 1.1rem;
+      font-size: 1rem;
       opacity: 0.9;
+      transition: var(--transition);
     }
 
+    body.scrolled header p {
+      font-size: 0.85rem;
+    }
+
+    /* Hero section com animação de entrada */
     .hero {
       background: url('https://source.unsplash.com/1600x600/?technology,computer') no-repeat center/cover;
       padding: 6rem 1rem;
@@ -80,7 +125,13 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 350px;
+      min-height: 400px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero::before {
@@ -103,22 +154,39 @@
       font-size: 2.8rem;
       font-weight: 700;
       margin-bottom: 1rem;
+      animation: slideInUp 0.8s ease-out 0.2s both;
     }
 
+    .hero p {
+      font-size: 1.3rem;
+      animation: slideInUp 0.8s ease-out 0.4s both;
+    }
+
+    /* Conteúdo principal com animações */
     main.content {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.95);
       max-width: 900px;
       margin: -80px auto 2rem auto;
       padding: 3rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-lg);
       backdrop-filter: blur(6px);
       position: relative;
       z-index: 10;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     main.content h3 {
-      color: #0050b3;
+      color: var(--primary-color);
       margin-bottom: 1.5rem;
       font-size: 1.8rem;
       font-weight: 600;
@@ -127,9 +195,10 @@
     main.content p {
       margin-bottom: 2rem;
       font-size: 1.1rem;
-      color: #444;
+      color: var(--text-light);
     }
 
+    /* Formulário com interações fluidas */
     form {
       display: flex;
       flex-direction: column;
@@ -139,40 +208,49 @@
     input, textarea {
       padding: 1rem;
       font-size: 1rem;
-      border-radius: 12px;
+      border-radius: var(--border-radius);
       border: 1.5px solid #ddd;
-      transition: border-color 0.3s ease;
+      transition: var(--transition);
       font-family: 'Inter', sans-serif;
+      background: rgba(255,255,255,0.9);
     }
 
     input:focus, textarea:focus {
-      border-color: #0050b3;
+      border-color: var(--primary-color);
       outline: none;
-      box-shadow: 0 0 5px #0050b3aa;
+      box-shadow: 0 0 0 3px rgba(0, 80, 179, 0.2);
+      transform: translateY(-2px);
     }
 
     button {
-      background: #0050b3;
+      background: var(--primary-color);
       color: white;
       padding: 1.2rem;
       font-size: 1.1rem;
       font-weight: 600;
       border: none;
-      border-radius: 12px;
+      border-radius: var(--border-radius);
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
+      will-change: transform;
     }
 
     button:hover {
-      background: #003d8a;
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 14px rgba(0,0,0,0.1);
     }
 
-    /* WhatsApp fixed button with icon */
+    button:active {
+      transform: translateY(-1px);
+    }
+
+    /* Botão do WhatsApp com animação pulsante */
     .whatsapp {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background: #25d366;
+      background: var(--secondary-color);
       color: white;
       padding: 15px 20px;
       border-radius: 50px;
@@ -183,57 +261,110 @@
       align-items: center;
       gap: 10px;
       font-size: 1.1rem;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
       z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .whatsapp:hover {
       background: #1ebc59;
+      transform: scale(1.05) translateY(-3px);
+      animation: none;
     }
 
     .whatsapp i {
       font-size: 1.5rem;
     }
 
+    /* Footer com entrada suave */
     footer {
       text-align: center;
       padding: 1.8rem 1rem;
       background: #f7f9fc;
       font-size: 0.9rem;
-      color: #555;
+      color: var(--text-light);
       margin-top: auto;
       border-top: 1px solid #ddd;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.8s forwards;
     }
 
-    /* Responsividade */
+    /* Efeito de hover em cards (para futuras expansões) */
+    .card {
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Scroll personalizado */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Responsividade com transições suaves */
     @media (max-width: 768px) {
       header {
         flex-direction: row;
         gap: 1rem;
         text-align: left;
-        padding: 1.2rem;
+        padding: 1rem;
       }
       
       header .logo {
-        height: 80px;
+        height: 60px;
+      }
+      
+      body.scrolled header .logo {
+        height: 50px;
       }
       
       header h1 {
-        font-size: 1.8rem;
-        margin-bottom: 0.3rem;
+        font-size: 1.6rem;
+      }
+      
+      body.scrolled header h1 {
+        font-size: 1.4rem;
       }
       
       header p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
       
       .hero {
         padding: 4rem 1rem;
-        min-height: 280px;
+        min-height: 300px;
       }
       
       .hero h2 {
         font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
       }
       
       main.content {
@@ -250,7 +381,7 @@
       }
       
       header h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       
       .hero h2 {
@@ -299,5 +430,52 @@
     <p>&copy; 2025 Infosphere - Todos os direitos reservados</p>
   </footer>
 
+  <script>
+    // Efeito de scroll no header
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.body.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+      }
+    });
+
+    // Animação de elementos quando entram na viewport
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.content, footer');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+          element.style.animation = 'fadeInUp 0.8s ease-out forwards';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+
+    // Suavizar todos os links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Feedback tátil para botões
+    document.querySelectorAll('button, input[type="submit"], .whatsapp').forEach(button => {
+      button.addEventListener('click', function() {
+        this.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+  </script>
 </body>
 </html>
